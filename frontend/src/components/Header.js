@@ -11,6 +11,7 @@ const Header = ({ title }) => {
     <Navbar style={navbarStyle} data-bs-theme="light">
       <Container>
         <Logo
+          alt={title}
           style={{ maxWidth: "50rem", display: "block", margin: "0 auto" }}
         />
       </Container>
