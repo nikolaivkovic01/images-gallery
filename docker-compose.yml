@@ -16,6 +16,10 @@ services:
       - "5050:5050"
     volumes:
       - ./api:/app
+    env_file:
+      - ./api/.env.local
+    depends_on:
+      - mongo
   mongo:
     image: mongo
     restart: always
