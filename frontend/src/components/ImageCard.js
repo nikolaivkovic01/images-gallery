@@ -3,9 +3,12 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
 const ImageCard = ({ image, deleteImage, saveImage }) => {
+  const authorName = image.user?.name || "No author name";
+  const authorPortfolioURL = image.user?.portfolio_url;
+
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={image.urls.small} />
+      <Card.Img variant="top" src={image.urls?.small} />
       <Card.Body>
         <Card.Title>{image.title?.toUpperCase()}</Card.Title>
         <Card.Text>{image.description || image.alt_description}</Card.Text>
@@ -18,6 +21,15 @@ const ImageCard = ({ image, deleteImage, saveImage }) => {
           </Button>
         )}
       </Card.Body>
+      <Card.Footer className="text-center text-muted">
+        {authorPortfolioURL ? (
+          <a href={authorPortfolioURL} target="_blank" rel="noreferrer">
+            {authorName}
+          </a>
+        ) : (
+          authorName
+        )}
+      </Card.Footer>
     </Card>
   );
 };
